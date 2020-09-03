@@ -73,6 +73,14 @@ module.exports.URL= Object.freeze({
 
 
 });
+module.exports.Proxy= Object.freeze({   
+  IP:"176.61.141.229",
+  port:"23556",
+  username:"ace89",
+  password:"MPK3NRU4FJGRTRO28GOAZN4N"
+  });
+
 module.exports.AntiCaptcha= Object.freeze({   
   key:"89358358ab7f3d7d910698b1b6384ae3"
   });
+  

@@ -4,33 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var allahabadRouter = require('./routes/allahabad');
-var andhraPradeshRouter = require('./routes/andhra-pradesh');
-var bombayRouter = require('./routes/bombay');
-var delhiRouter = require('./routes/delhi');
-var calcuttaRouter = require('./routes/calcutta');
-var chhattisgarhRouter = require('./routes/chhattisgarh');
-var gujratRouter = require('./routes/gujrat');
-var himachalPradeshRouter = require('./routes/himachal-pradesh');
-var guwahatiRouter = require('./routes/guwahati');
-var jammuKashmirRouter = require('./routes/jammu_kashmir');
-var jharkhandRouter = require('./routes/jharkhand');
-var keralaRouter = require('./routes/kerala');
-var karnatakaRouter = require('./routes/karnataka');
-var madrasRouter = require('./routes/madras');
-var madhyaPradeshRouter = require('./routes/madhya-pradesh');
-var manipurRouter = require('./routes/manipur');
-var meghalayaRouter = require('./routes/meghalaya');
-var orissaRouter = require('./routes/orissa');
-var patnaRouter = require('./routes/patna');
-var rajasthanRouter = require('./routes/rajasthan');
-var rajasthanRouter = require('./routes/rajasthan');
-var sikkimRouter = require('./routes/sikkim');
-var telanganaRouter = require('./routes/telangana');
-var tripuraRouter = require('./routes/tripura');
-var uttarakhandRouter = require('./routes/uttarakhand');
+var HighCourtRoutes = require('./routes/high-courts/index');
+var DistrictCourtsRoutes = require('./routes/district-courts/district-courts');
+var PoliceStationRoutes = require('./routes/police-station/index');
 
 var app = express();
 
@@ -65,32 +41,12 @@ app.use(express.static(path.join(__dirname, '/public/images')));
 app.use('/', express.static(path.join(__dirname, '/dist/ProjectScrap-Frontend')));
 
 // app.use('/', indexRouter);
-app.use('/allahabad', allahabadRouter);
-app.use('/andhra-pradesh', andhraPradeshRouter);
-app.use('/bombay', bombayRouter);
-app.use('/delhi', delhiRouter);
-app.use('/calcutta', calcuttaRouter);
-app.use('/chhattisgarh', chhattisgarhRouter);
-app.use('/gujrat', gujratRouter);
-app.use('/guwahati', guwahatiRouter);
-app.use('/himachal-pradesh', himachalPradeshRouter);
-app.use('/jammu-kashmir', jammuKashmirRouter);
-app.use('/jharkhand', jharkhandRouter);
-app.use('/karnataka', karnatakaRouter);
-app.use('/kerala', keralaRouter);
-app.use('/madhya-pradesh', madhyaPradeshRouter);
-app.use('/madras', madrasRouter);
-app.use('/manipur', manipurRouter);
-app.use('/meghalaya', meghalayaRouter);
-app.use('/orissa', orissaRouter);
-app.use('/patna', patnaRouter);
-app.use('/rajasthan', rajasthanRouter);
-app.use('/sikkim', sikkimRouter);
-app.use('/scrape', usersRouter);
-app.use('/scrape', usersRouter);
-app.use('/telangana', telanganaRouter);
-app.use('/tripura', tripuraRouter);
-app.use('/uttarakhand', uttarakhandRouter);
+app.use('/', HighCourtRoutes);
+
+app.use('/police-station', PoliceStationRoutes);
+
+app.use('/district-court', DistrictCourtsRoutes);
+
 // Send all requests to index.html
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/ProjectScrap-Frontend/index.html'));

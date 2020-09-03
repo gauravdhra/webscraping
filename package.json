@@ -11,10 +11,15 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "form-data": "^3.0.0",
+    "http": "0.0.1-security",
     "http-errors": "~1.6.3",
+    "https-proxy-agent": "^5.0.0",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
+    "node-fetch": "^2.6.0",
     "puppeteer": "^5.2.1",
-    "qs": "^6.9.4"
+    "qs": "^6.9.4",
+    "querystring": "^0.2.0"
   }
 }
