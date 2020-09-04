@@ -6,7 +6,9 @@ var logger = require('morgan');
 
 var HighCourtRoutes = require('./routes/high-courts/index');
 var DistrictCourtsRoutes = require('./routes/district-courts/district-courts');
+var SupremeCourtRoute = require('./routes/supreme-court/supreme-court');
 var PoliceStationRoutes = require('./routes/police-station/index');
+var TribunalRouter = require('./routes/tribunals/index');
 
 var app = express();
 
@@ -43,9 +45,13 @@ app.use('/', express.static(path.join(__dirname, '/dist/ProjectScrap-Frontend'))
 // app.use('/', indexRouter);
 app.use('/', HighCourtRoutes);
 
+app.use('/supreme-court', SupremeCourtRoute);
+
 app.use('/police-station', PoliceStationRoutes);
 
 app.use('/district-court', DistrictCourtsRoutes);
+
+app.use('/tribunal', TribunalRouter);
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {

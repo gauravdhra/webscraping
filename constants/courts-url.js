@@ -70,6 +70,13 @@ module.exports.URL= Object.freeze({
   UTTARAKHAND_PARTY:"https://services.ecourts.gov.in/ecourtindiaHC/cases/ki_petres.php?state_cd=15&dist_cd=1&court_code=1&stateNm=Uttarakhand",
   
   
+  
+  SUPREME_COURT:"https://main.sci.gov.in/case-status",
+  
+  TRIBUNAL_ADVOCATE:"https://greentribunal.gov.in/casestatus/advocatename",
+  TRIBUNAL_CASE:"https://greentribunal.gov.in/casestatus/casenumber",
+  TRIBUNAL_PARTY:"https://greentribunal.gov.in/casestatus/partyname"
+
 
 
 });
