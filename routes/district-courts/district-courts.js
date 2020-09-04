@@ -24,7 +24,7 @@ router.get('/party', async function (req, res, next) {
     var base64Image = ""
     console.log("entered endpoint")
 
-    const browser = await puppeteer.launch({ headless: false, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
+    const browser = await puppeteer.launch({ headless: true, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
 
     const page = await browser.newPage()
     await page.authenticate({
@@ -105,7 +105,7 @@ router.get('/advocate', async function (req, res, next) {
     var base64Image = ""
     console.log("entered endpoint")
 
-    const browser = await puppeteer.launch({ headless: false, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
+    const browser = await puppeteer.launch({ headless: true, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
 
     const page = await browser.newPage()
     await page.authenticate({
@@ -188,7 +188,7 @@ router.get('/case-number', async function (req, res, next) {
     var base64Image = ""
     console.log("entered endpoint")
 
-    const browser = await puppeteer.launch({ headless: false, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
+    const browser = await puppeteer.launch({ headless: true, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
 
     const page = await browser.newPage()
     await page.authenticate({
@@ -278,7 +278,7 @@ router.get('/cnr-number', async function (req, res, next) {
     var li_Number = 4
     console.log("entered endpoint")
 
-    const browser = await puppeteer.launch({ headless: false, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
+    const browser = await puppeteer.launch({ headless: true, args: [`--proxy-server=http://${Proxy.IP}:${Proxy.port}`, '--no-sandbox'] })
 
     const page = await browser.newPage()
     await page.authenticate({
