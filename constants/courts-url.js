@@ -75,9 +75,14 @@ module.exports.URL= Object.freeze({
   
   TRIBUNAL_ADVOCATE:"https://greentribunal.gov.in/casestatus/advocatename",
   TRIBUNAL_CASE:"https://greentribunal.gov.in/casestatus/casenumber",
-  TRIBUNAL_PARTY:"https://greentribunal.gov.in/casestatus/partyname"
+  TRIBUNAL_PARTY:"https://greentribunal.gov.in/casestatus/partyname",
 
+  
+  // ELECTRICITY_TRIBUNAL_ADVOCATE:"https://greentribunal.gov.in/casestatus/advocatename",
+  ELECTRICITY_TRIBUNAL_CASE:"http://aptel.gov.in/casestatusapi/tab2",
+  ELECTRICITY_TRIBUNAL_PARTY:"http://aptel.gov.in/casestatusapi/tab3",
 
+  RAILWAY_TRIBUNAL:"http://rct.indianrail.gov.in/rct/rct_status.jsp"
 
 });
 module.exports.Proxy= Object.freeze({   

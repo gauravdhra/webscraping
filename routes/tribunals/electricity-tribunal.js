@@ -25,35 +25,28 @@ router.get('/party', async function (req, res, next) {
     });
     await page.setViewport({ width: 1280, height: 800 })
 
-    var getToUrl = URL.TRIBUNAL_PARTY
+    var getToUrl = URL.ELECTRICITY_TRIBUNAL_PARTY
 
-    page.goto(getToUrl, { "waitUntil": "networkidle0" })
+    page.goto(getToUrl)
 
-    await page.waitForSelector('button[type ="submit"]')
-
-    const captchaCode = await page.$eval('#mainCaptcha', el => el.textContent)
+    await page.waitForSelector('input[type ="submit"]')
 
 
-    console.log("taskSolution", captchaCode);
-
-    await page.select('select[name=zone_type]', req.query.zone_type)
     await page.select('select[name=party_type]', req.query.party_type)
-    await page.type('#partyname', req.query.partyname)
+    await page.type('input[name="party_name"]', req.query.party_name)
+    await page.select('select[name=diary_year]', req.query.diary_year)
 
-    await page.type('#txtInput', captchaCode)
 
-    await page.click('button[type ="submit"]')
+    await page.click('input[type ="submit"]')
 
     // Now see which one appeared:
-    await page.waitForSelector("#block-system-main table.customtable tbody tr", { timeout: 30000 });
+    await page.waitForSelector("table.table-striped tbody tr", { timeout: 30000 });
 
-    const tableData = await extractDataFromTable("#block-system-main table.customtable", page);
+    const tableData = await extractDataFromTable("table.table-striped", page);
 
     await browser.close();
 
     res.send({ listResponse: tableData.listResponse, headers: tableData.headers, message: "Result Found" })
-
-
 
   }
   catch (error) {
@@ -76,7 +69,7 @@ router.get('/advocate', async function (req, res, next) {
     });;
     await page.setViewport({ width: 1280, height: 800 })
 
-    var getToUrl = URL.TRIBUNAL_ADVOCATE
+    var getToUrl = URL.ELECTRICITY_TRIBUNAL_ADVOCATE
 
     page.goto(getToUrl, { "waitUntil": "networkidle0" })
 
@@ -136,38 +129,34 @@ router.get('/case-number', async function (req, res, next) {
     });;
     await page.setViewport({ width: 1280, height: 800 })
 
-    var getToUrl = URL.TRIBUNAL_CASE
+    var getToUrl = URL.ELECTRICITY_TRIBUNAL_CASE
 
     page.goto(getToUrl, { "waitUntil": "networkidle0" })
 
-    await page.waitForSelector('button[type ="submit"]')
-
-    const captchaCode = await page.$eval('#mainCaptcha', el => el.textContent)
+    await page.waitForSelector('input[type ="submit"]')
 
 
-    console.log("taskSolution", captchaCode);
 
-    await page.select('select[name="zone_type"]', req.query.zone_type)
     await page.select('select[name="case_type"]', req.query.case_type)
-    await page.type('#casenumber', req.query.casenumber)
-    await page.type('select[name="case_year"]', req.query.case_year)
 
-    await page.type('#txtInput', captchaCode)
+    await page.type('input[name="case_no"]', req.query.case_no)
 
-    await page.click('button[type ="submit"]')
+    await page.select('select[name="diary_year"]', req.query.diary_year)
+
+    await page.click('input[type ="submit"]')
+
 
     // Now see which one appeared:
-    await page.waitForSelector("#block-system-main table.customtable tbody tr", { timeout: 30000 });
+    await page.waitForSelector("table.table-striped tbody tr", { timeout: 30000 });
 
-    const tableData = await extractDataFromTable("#block-system-main table.customtable", page);
+    const tableData = await extractDataFromTable("table.table-striped", page);
 
-    await browser.close();
-
+    
     res.send({ listResponse: tableData.listResponse, headers: tableData.headers, message: "Result Found" })
+    browser.close();
 
 
-
-  }
+}
   catch (error) {
     next(error)
   }
